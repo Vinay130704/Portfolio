@@ -94,3 +94,43 @@ logger = logging.getLogger(__name__)
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+
+# Serve React Frontend (Place this at the end)
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from fastapi import HTTPException
+
+# Mount static assets (JS/CSS)
+# Check if build directory exists to avoid errors during development if not built
+build_dir = ROOT_DIR.parent / "frontend" / "build"
+logger.info(f"Frontend build directory: {build_dir}")
+logger.info(f"Build directory exists: {build_dir.exists()}")
+if (build_dir / "static").exists():
+    app.mount("/static", StaticFiles(directory=build_dir / "static"), name="static")
+
+# Explicit root route
+@app.get("/")
+async def serve_root():
+    index_path = build_dir / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    return {"message": "Frontend not found. Check build directory."}
+
+# Catch-all for React
+@app.get("/{full_path:path}")
+async def serve_react_app(full_path: str):
+    # Allow API routes to pass through
+    if full_path.startswith("api"):
+        raise HTTPException(status_code=404, detail="Not Found")
+    
+    # Check if file exists in build directory (e.g., favicon.ico, manifest.json)
+    file_path = build_dir / full_path
+    if file_path.exists() and file_path.is_file():
+        return FileResponse(file_path)
+    
+    # Otherwise return index.html for client-side routing
+    index_path = build_dir / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    
+    return {"message": "Frontend not built. Run 'npm run build' in frontend directory."}
