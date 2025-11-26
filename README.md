@@ -2,7 +2,7 @@
 
 A modern, responsive personal portfolio website built with the MERN stack (MongoDB, Express-like FastAPI, React, Node.js environment) and Python. This project showcases my skills, projects, and experience with a sleek, dark-themed UI.
 
-![Portfolio Preview](/frontend/public/assets/recipe-genai.png)
+![Portfolio Preview](https://images.unsplash.com/photo-1707528041466-83a325f01a3c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjB3b3Jrc3BhY2V8ZW58MHx8fHwxNzY0MTI5MDYzfDA&ixlib=rb-4.1.0&q=85)
 
 ## 🚀 Features
 
