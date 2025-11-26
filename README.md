@@ -109,4 +109,4 @@ The app will open at `http://localhost:3000`.
 Feel free to reach out to me via the contact form on the website or directly at [vinaykumar.jld13@gmail.com](mailto:vinaykumar.jld13@gmail.com).
 
 ---
-Made with ❤️ and Python
+Made by Vinay Kumar
