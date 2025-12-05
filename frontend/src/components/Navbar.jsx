@@ -46,7 +46,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo/Name */}
+          {}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="text-xl sm:text-2xl font-bold text-white hover:text-emerald-400 transition-colors duration-300"
@@ -54,7 +54,7 @@ const Navbar = () => {
             {personalInfo.name.split(' ')[0]}
           </button>
 
-          {/* Desktop Navigation */}
+          {}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <button
@@ -75,7 +75,7 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-white hover:text-emerald-400 transition-colors duration-300"
@@ -85,7 +85,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {}
       <div
         className={`md:hidden transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'

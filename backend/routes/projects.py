@@ -17,7 +17,7 @@ async def get_projects():
         projects_cursor = db.projects.find().sort("created_at", -1)
         projects = await projects_cursor.to_list(length=100)
         
-        # Remove MongoDB _id field
+        
         for project in projects:
             if "_id" in project:
                 del project["_id"]
@@ -42,21 +42,21 @@ async def get_project(project_id: str, request: Request):
         if not project:
             raise HTTPException(status_code=404, detail="Project not found")
         
-        # Increment view count
+        
         await db.projects.update_one(
             {"id": project_id},
             {"$inc": {"views": 1}}
         )
         
-        # Track view
+        
         client_ip = request.client.host if request.client else None
         view = ProjectView(project_id=project_id, ip_address=client_ip)
         await db.project_views.insert_one(view.dict())
         
-        # Update view count in response
+        
         project["views"] = project.get("views", 0) + 1
         
-        # Remove MongoDB _id field
+        
         if "_id" in project:
             del project["_id"]
         
@@ -82,18 +82,18 @@ async def track_project_view(project_id: str, request: Request):
         if not project:
             raise HTTPException(status_code=404, detail="Project not found")
         
-        # Increment view count
+        
         result = await db.projects.update_one(
             {"id": project_id},
             {"$inc": {"views": 1}}
         )
         
-        # Track view
+        
         client_ip = request.client.host if request.client else None
         view = ProjectView(project_id=project_id, ip_address=client_ip)
         await db.project_views.insert_one(view.dict())
         
-        # Get updated view count
+        
         updated_project = await db.projects.find_one({"id": project_id})
         views = updated_project.get("views", 0)
         

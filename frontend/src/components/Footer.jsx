@@ -27,7 +27,7 @@ const Footer = () => {
     <footer className="bg-black border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Brand Section */}
+          {}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-white">
               {personalInfo.name.split(' ')[0]}
@@ -53,7 +53,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {}
           <div className="space-y-4">
             <h4 className="text-lg font-bold text-white">Quick Links</h4>
             <ul className="space-y-2">
@@ -70,7 +70,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {}
           <div className="space-y-4">
             <h4 className="text-lg font-bold text-white">Get In Touch</h4>
             <ul className="space-y-2 text-sm">
@@ -88,7 +88,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {}
         <div className="mt-12 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">

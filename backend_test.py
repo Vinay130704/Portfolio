@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 Backend API Testing Suite for Developer Portfolio
 Tests all API endpoints and verifies MongoDB integration
@@ -11,7 +11,7 @@ import os
 from datetime import datetime
 import uuid
 
-# Get backend URL from environment
+
 BACKEND_URL = "https://code-showcase-348.preview.emergentagent.com"
 API_BASE = f"{BACKEND_URL}/api"
 
@@ -69,7 +69,7 @@ def test_contact_form_submission():
     """Test POST /api/contact - Contact form submission"""
     print_test_header("Contact Form Submission")
     
-    # Test data
+    
     contact_data = {
         "name": "John Doe",
         "email": "john@example.com",
@@ -91,7 +91,7 @@ def test_contact_form_submission():
                 print_success("Contact form submission successful")
                 print_info(f"Message ID: {data.get('id')}")
                 print_info(f"Response: {data}")
-                return data.get("id")  # Return message ID for later use
+                return data.get("id")  
             else:
                 print_error(f"Contact form submission failed: {data}")
                 return None
@@ -118,7 +118,7 @@ def test_get_contact_messages():
                 print_success(f"Retrieved {len(messages)} contact messages")
                 print_info(f"Response structure: success={data.get('success')}, count={data.get('count')}")
                 
-                # Check if our test message is in the list
+                
                 test_message_found = False
                 for msg in messages:
                     if msg.get("email") == "john@example.com" and msg.get("subject") == "Test Message":
@@ -158,7 +158,7 @@ def test_get_projects():
                 print_success(f"Retrieved {len(projects)} projects")
                 
                 if len(projects) > 0:
-                    # Check project structure
+                    
                     first_project = projects[0]
                     required_fields = ["id", "title", "short_description", "description", 
                                      "technologies", "duration", "github", "demo", "image", 
@@ -172,7 +172,7 @@ def test_get_projects():
                     if not missing_fields:
                         print_success("Project structure is correct")
                         print_info(f"Sample project: {first_project.get('title')}")
-                        return projects  # Return projects for further testing
+                        return projects  
                     else:
                         print_error(f"Missing fields in project structure: {missing_fields}")
                         return projects
@@ -196,7 +196,7 @@ def test_get_single_project_and_views(project_id):
     print_test_header(f"Get Single Project and Track View")
     
     try:
-        # First, get the project to check initial view count
+        
         response = requests.get(f"{API_BASE}/projects/{project_id}", timeout=10)
         
         if response.status_code == 200:
@@ -207,7 +207,7 @@ def test_get_single_project_and_views(project_id):
                 print_success(f"Retrieved project: {project.get('title')}")
                 print_info(f"Initial view count: {initial_views}")
                 
-                # Make another request to test view increment
+                
                 response2 = requests.get(f"{API_BASE}/projects/{project_id}", timeout=10)
                 if response2.status_code == 200:
                     data2 = response2.json()
@@ -317,27 +317,27 @@ def main():
     
     test_results = {}
     
-    # Test 1: Health Check
+    
     test_results["health_check"] = test_health_check()
     
-    # Test 2: Contact Form Submission
+    
     message_id = test_contact_form_submission()
     test_results["contact_submission"] = message_id is not None
     
-    # Test 3: Get Contact Messages
+    
     test_results["get_contacts"] = test_get_contact_messages()
     
-    # Test 4: Get Projects
+    
     projects = test_get_projects()
     test_results["get_projects"] = projects is not None
     
-    # Test 5 & 6: Project view tracking (use existing project or create one)
+    
     project_id = None
     if projects and len(projects) > 0:
         project_id = projects[0].get("id")
         print_info(f"Using existing project for view tests: {project_id}")
     else:
-        # Create a test project if none exist
+        
         project_id = create_test_project()
         test_results["create_project"] = project_id is not None
     
@@ -349,7 +349,7 @@ def main():
         test_results["get_single_project"] = False
         test_results["track_view"] = False
     
-    # Print summary
+    
     print_test_header("Test Summary")
     
     passed = 0

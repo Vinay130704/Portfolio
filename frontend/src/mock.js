@@ -1,4 +1,4 @@
-// Mock data for Vinay Kumar's Portfolio
+
 
 export const personalInfo = {
   name: "Vinay Kumar",
@@ -181,7 +181,7 @@ export const education = [
   }
 ];
 
-// Mock function to simulate contact form submission
+
 export const submitContactForm = async (formData) => {
   return new Promise((resolve) => {
     setTimeout(() => {

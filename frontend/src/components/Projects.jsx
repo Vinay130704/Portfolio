@@ -22,7 +22,7 @@ const Projects = () => {
         }
       } catch (error) {
         console.error('Error fetching projects:', error);
-        // Keep using mock data if API fails
+        
       } finally {
         setLoading(false);
       }
@@ -34,7 +34,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Featured <span className="text-emerald-400">Projects</span>
@@ -45,14 +45,14 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* Projects Grid */}
+        {}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <Card
               key={project.id}
               className="bg-gray-900/50 border-gray-800 hover:border-emerald-500/50 transition-all duration-300 overflow-hidden group hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/10"
             >
-              {/* Project Image */}
+              {}
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={project.image}
@@ -68,9 +68,9 @@ const Projects = () => {
                 )}
               </div>
 
-              {/* Project Content */}
+              {}
               <div className="p-6 space-y-4">
-                {/* Title & Duration */}
+                {}
                 <div>
                   <h3 className="text-xl font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors duration-300">
                     {project.title}
@@ -78,12 +78,12 @@ const Projects = () => {
                   <p className="text-sm text-gray-500">{project.duration}</p>
                 </div>
 
-                {/* Short Description */}
+                {}
                 <p className="text-gray-400 text-sm">
                   {project.shortDescription}
                 </p>
 
-                {/* Technologies */}
+                {}
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.slice(0, 4).map((tech, idx) => (
                     <Badge
@@ -104,7 +104,7 @@ const Projects = () => {
                   )}
                 </div>
 
-                {/* Action Buttons */}
+                {}
                 <div className="flex gap-3 pt-2">
                   <Button
                     onClick={() => window.open(project.github, '_blank')}
@@ -129,7 +129,7 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* View More Section */}
+        {}
         <div className="text-center mt-12">
           <Button
             onClick={() => window.open('https://github.com/Vinay130704', '_blank')}

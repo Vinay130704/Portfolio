@@ -55,7 +55,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Get In <span className="text-emerald-400">Touch</span>
@@ -67,9 +67,9 @@ const Contact = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Contact Info Cards */}
+          {}
           <div className="space-y-6">
-            {/* Email Card */}
+            {}
             <Card className="bg-gray-900/50 border-gray-800 hover:border-emerald-500/50 transition-all duration-300 hover:transform hover:scale-105">
               <div className="p-6 text-center space-y-3">
                 <div className="flex items-center justify-center">
@@ -87,7 +87,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            {/* Location Card */}
+            {}
             <Card className="bg-gray-900/50 border-gray-800 hover:border-emerald-500/50 transition-all duration-300 hover:transform hover:scale-105">
               <div className="p-6 text-center space-y-3">
                 <div className="flex items-center justify-center">
@@ -100,7 +100,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            {/* GitHub Card */}
+            {}
             <Card className="bg-gray-900/50 border-gray-800 hover:border-emerald-500/50 transition-all duration-300 hover:transform hover:scale-105">
               <div className="p-6 text-center space-y-3">
                 <div className="flex items-center justify-center">
@@ -121,7 +121,7 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* Contact Form */}
+          {}
           <Card className="md:col-span-2 bg-gray-900/50 border-gray-800 hover:border-emerald-500/50 transition-all duration-300">
             <form onSubmit={handleSubmit} className="p-8 space-y-6">
               <div className="grid md:grid-cols-2 gap-6">

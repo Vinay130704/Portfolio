@@ -9,12 +9,12 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
+
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Project data from mock.js
+
 projects_data = [
     {
         "title": "Guardian Net",
@@ -55,13 +55,13 @@ projects_data = [
 async def seed_projects():
     """Seed the database with project data"""
     try:
-        # Check if projects already exist
+        
         existing_count = await db.projects.count_documents({})
         if existing_count > 0:
             print(f"Database already has {existing_count} projects. Skipping seed.")
             return
         
-        # Insert projects
+        
         for project_data in projects_data:
             project = Project(**project_data)
             await db.projects.insert_one(project.dict())

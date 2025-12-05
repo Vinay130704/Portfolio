@@ -17,7 +17,7 @@ class ContactMessage(BaseModel):
     email: str
     subject: str
     message: str
-    status: str = "unread"  # unread, read, replied
+    status: str = "unread"  
     created_at: datetime = Field(default_factory=datetime.utcnow)
     ip_address: Optional[str] = None
 

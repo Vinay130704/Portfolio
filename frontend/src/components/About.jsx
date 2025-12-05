@@ -7,7 +7,7 @@ const About = () => {
   return (
     <section id="about" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             About <span className="text-emerald-400">Me</span>
@@ -15,9 +15,9 @@ const About = () => {
           <div className="w-24 h-1 bg-emerald-400 mx-auto"></div>
         </div>
 
-        {/* Content Grid */}
+        {}
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Image Side */}
+          {}
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
             <div className="relative">
@@ -29,7 +29,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Text Side */}
+          {}
           <div className="space-y-6">
             <h3 className="text-3xl font-bold text-white">
               I'm a passionate developer focused on creating innovative solutions
@@ -38,7 +38,7 @@ const About = () => {
               {personalInfo.bio}
             </p>
 
-            {/* Quick Stats */}
+            {}
             <div className="grid grid-cols-2 gap-4 pt-6">
               <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-800 hover:border-emerald-500/50 transition-colors duration-300">
                 <div className="text-3xl font-bold text-emerald-400">3+</div>
@@ -60,7 +60,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Education Section */}
+        {}
         <div className="mt-20">
           <h3 className="text-3xl font-bold text-white mb-8 text-center">
             Education <span className="text-emerald-400">Background</span>

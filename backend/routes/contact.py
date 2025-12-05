@@ -16,19 +16,19 @@ async def create_contact_message(input: ContactMessageCreate, request: Request):
     Submit a contact form message
     """
     try:
-        # Get client IP address
+        
         client_ip = request.client.host if request.client else None
         
-        # Create contact message object
+        
         contact_dict = input.dict()
         contact_obj = ContactMessage(**contact_dict, ip_address=client_ip)
         
-        # Save to database
+        
         result = await db.contact_messages.insert_one(contact_obj.dict())
         
         logger.info(f"Contact message created: {contact_obj.id} from {contact_obj.email}")
         
-        # Send email notification
+        
         email_to = os.environ.get("MAIL_TO")
         if email_to:
             await send_contact_email(
@@ -56,7 +56,7 @@ async def get_contact_messages(skip: int = 0, limit: int = 100):
         messages_cursor = db.contact_messages.find().sort("created_at", -1).skip(skip).limit(limit)
         messages = await messages_cursor.to_list(length=limit)
         
-        # Convert ObjectId to string for JSON serialization
+        
         for message in messages:
             if "_id" in message:
                 del message["_id"]
@@ -82,7 +82,7 @@ async def get_contact_message(message_id: str):
         if not message:
             raise HTTPException(status_code=404, detail="Message not found")
         
-        # Remove MongoDB _id field
+        
         if "_id" in message:
             del message["_id"]
         
