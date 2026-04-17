@@ -97,40 +97,20 @@ async def shutdown_db_client():
 
 
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
-from fastapi import HTTPException
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+FRONTEND_BUILD = BASE_DIR / "frontend" / "build"
 
+logger.info(f"Frontend build directory: {FRONTEND_BUILD}")
+logger.info(f"Build directory exists: {FRONTEND_BUILD.exists()}")
 
-build_dir = ROOT_DIR.parent / "frontend" / "build"
-logger.info(f"Frontend build directory: {build_dir}")
-logger.info(f"Build directory exists: {build_dir.exists()}")
-if (build_dir / "static").exists():
-    app.mount("/static", StaticFiles(directory=build_dir / "static"), name="static")
-
-
-@app.get("/")
-async def serve_root():
-    index_path = build_dir / "index.html"
-    if index_path.exists():
-        return FileResponse(index_path)
-    return {"message": "Frontend not found. Check build directory."}
-
-
-@app.get("/{full_path:path}")
-async def serve_react_app(full_path: str):
-    
-    if full_path.startswith("api"):
-        raise HTTPException(status_code=404, detail="Not Found")
-    
-    
-    file_path = build_dir / full_path
-    if file_path.exists() and file_path.is_file():
-        return FileResponse(file_path)
-    
-    
-    index_path = build_dir / "index.html"
-    if index_path.exists():
-        return FileResponse(index_path)
-    
-    return {"message": "Frontend not built. Run 'npm run build' in frontend directory."}
+if FRONTEND_BUILD.exists():
+    app.mount(
+        "/",
+        StaticFiles(directory=str(FRONTEND_BUILD), html=True),
+        name="frontend",
+    )
+else:
+    @app.get("/")
+    async def fallback():
+        return {"error": "Frontend build not found. Ensure npm run build executed during deployment."}
