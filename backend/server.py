@@ -98,7 +98,7 @@ async def shutdown_db_client():
 
 from fastapi.staticfiles import StaticFiles
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent  # goes to Portfolio-1
 FRONTEND_BUILD = BASE_DIR / "frontend" / "build"
 
 logger.info(f"Frontend build directory: {FRONTEND_BUILD}")
